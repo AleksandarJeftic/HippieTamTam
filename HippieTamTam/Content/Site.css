@@ -1,0 +1,70 @@
+﻿
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;  
+}
+
+body{
+    margin:0 auto;
+    padding:0;
+}
+
+#bodyWrap{
+    margin:0 auto;
+    min-height:100%;
+    overflow-x:hidden;
+    padding:0;
+}
+
+.blog-featured{
+    background:url(../Images/ekipa.png) #475460 no-repeat center bottom;
+    background-size:562px 315px;
+    margin:0;
+    padding:0;
+    position:relative;
+    text-align:center;
+}
+
+.b-container{
+    margin-left:auto;
+    margin-right:auto;
+    max-width:1140px;
+    padding-left:15px;
+    padding-right:15px;
+}
+.blog-featured .link{
+    padding:2.25em 0 20em;
+    display:block;
+    text-decoration:none;
+    position:relative;
+}
+
+h1{
+    color:white;
+    font-family:"Aktiv Grotesk",Helvetica,Arial,sans-serif;
+    font-weight:500;
+    line-height:1.3em;
+    opacity:1;
+    font-size:28px;
+    font-style:normal;
+}
+
+.blog-featured .meta{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:white;
+    margin:8px 0;
+}
+
+@media (min-width:768px){
+    .blog-featured .link{
+        padding:3.5em 0 21em;
+    }
+
+    .blog-featured h1{
+        font-size:38px;
+    }
+}
