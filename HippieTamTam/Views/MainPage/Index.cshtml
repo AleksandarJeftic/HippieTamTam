@@ -9,11 +9,12 @@
         </div>
     </div>
 </section>
+
 <section id="b-nav">
     <div class="b-container">
         <ul id="nav-tabs" class="nav nav-tabs">
-            <li>
-                <a href="#" class="active" data-toggle="tab">Najnovije</a>
+            <li class="active">
+                <a href="#" data-toggle="tab">Najnovije</a>
             </li>
             <li>
                 <a href="#" data-toggle="tab">Afirmacije</a>
@@ -27,4 +28,10 @@
         </ul>
     </div>
 </section>
+<script type="text/javascript">
+        $("li").on("click", function () {
+            $("li").removeClass("active");
+            $(this).addClass("active");
+        });
+</script>
 
