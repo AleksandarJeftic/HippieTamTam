@@ -17,8 +17,9 @@ body{
     padding:0;
 }
 
+/*header with background and headline*/ 
 .blog-featured{
-    background:url(../Images/ekipa.png) #475460 no-repeat center bottom;
+    background:url(../Images/ekipa.png) #824ed2 no-repeat center bottom;
     background-size:562px 315px;
     margin:0;
     padding:0;
@@ -26,6 +27,14 @@ body{
     text-align:center;
 }
 
+.blog-featured .link{
+    padding:2.25em 0 20em;
+    display:block;
+    text-decoration:none;
+    position:relative;
+}
+
+/*responsive container */
 .b-container{
     margin-left:auto;
     margin-right:auto;
@@ -33,12 +42,49 @@ body{
     padding-left:15px;
     padding-right:15px;
 }
-.blog-featured .link{
-    padding:2.25em 0 20em;
-    display:block;
-    text-decoration:none;
-    position:relative;
+
+/*navigation menu rules from main page*/
+#b-nav{
+    background-color:#eaebed;
+    margin-bottom:2em;
 }
+
+#nav-tabs{
+    border:0;
+    padding:5px 0 0;
+}
+
+#nav-tabs li{
+    float:none;
+    margin:0;
+    list-style:none;
+    clear:both;
+    
+}
+
+#nav-tabs li a {
+    border:0;
+    border-radius:50px;
+    color:#9ca4ac;
+    font-size:16px;
+    text-align:center;
+    padding:20px 25px;
+    
+    
+}
+
+#nav-tabs  li .active  {
+    background:#fff;
+    color:#555 !important;
+}
+
+#nav-tabs  li a:hover{
+    background:#fff;
+    color:#555;
+}
+
+
+
 
 h1{
     color:white;
@@ -60,6 +106,7 @@ h1{
 }
 
 @media (min-width:768px){
+
     .blog-featured .link{
         padding:3.5em 0 21em;
     }
@@ -67,4 +114,37 @@ h1{
     .blog-featured h1{
         font-size:38px;
     }
+
 }
+
+@media (min-width:992px){
+    #b-nav{
+        margin-bottom:5em;
+    }
+    #nav-tabs li{
+        clear:none;
+        float:left;
+    }
+    #nav-tabs li a {
+        border-radius: 0;
+        
+    }
+}
+
+@media(max-width:991px) and (min-width:544px){
+    #b-nav{
+        margin-bottom:3em;
+    }
+     #nav-tabs li{
+        clear:none;
+        float:left;
+    }
+
+    #nav-tabs li a{
+        border-radius:0;
+        padding:20px 12px;
+        font-size:14px;
+        
+    }
+}
+
