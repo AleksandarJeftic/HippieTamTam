@@ -122,7 +122,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\brand-strategy.png" />
     <Content Include="Images\ekipa.png" />
+    <Content Include="Images\employee-identity.png" />
+    <Content Include="Images\insincere-support.png" />
+    <Content Include="Images\leadership-books.png" />
+    <Content Include="Images\project-proposal.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

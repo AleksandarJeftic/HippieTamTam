@@ -1,7 +1,7 @@
 ﻿<section class="blog-featured">
     <div class="b-container">
         <div class="link">
-            <h1>Otvaranje predivnog kutka za duhovno obrazovane i neobrazovane.</h1>
+            <h1>Otvaranje novog kutka za duhovno obrazovane i neobrazovane...Prdnuo sam.</h1>
             <p class="meta">
                 <span>hippie_tamtam</span>
                 &nbsp;|&nbsp; Jully 3, 2017
@@ -14,20 +14,129 @@
     <div class="b-container">
         <ul id="nav-tabs" class="nav nav-tabs">
             <li class="active">
-                <a href="#" data-toggle="tab">Najnovije</a>
+                <a href="#najnovije" data-toggle="tab">Najnovije</a>
             </li>
             <li>
-                <a href="#" data-toggle="tab">Afirmacije</a>
+                <a href="#afirmacije" data-toggle="tab">Afirmacije</a>
             </li>
             <li>
-                <a href="#" data-toggle="tab">Pesme</a>
+                <a href="#pesme" data-toggle="tab">Pesme</a>
             </li>
             <li>
-                <a href="#" data-toggle="tab">...u jednom dahu o jednom duhu...</a>
+                <a href="#ujdojd" data-toggle="tab">...u jednom dahu o jednom duhu...</a>
             </li>
         </ul>
     </div>
 </section>
+
+<div class="b-container">
+    <div id="post-list" class="tab-content">
+        <div class="tab-pane fade in active" id="najnovije">
+            <div class="row-flex">
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                    <a href="#" class="post-box">
+                        <figure>
+                            <img src="~/Images/employee-identity.png" class="post-img"/>
+                        </figure>
+                            <p>
+                                <span class="category">
+                                    Afirmacije
+                                </span>
+                                <br>
+                                Vi ste Supermen ili Superzena,u svakom trenutku.
+
+                            </p>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                    <a href="#" class="post-box">
+                        <figure>
+                            <img src="~/Images/brand-strategy.png" class="post-img" />
+                        </figure>
+                        <p>
+                            <span class="category">
+                                Afirmacije
+                            </span>
+                            <br>
+                            Ljubav koja počiva na plemenitim motivima, 
+                            traje večno.
+
+                        </p>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                    <a href="#" class="post-box">
+                        <figure>
+                            <img src="~/Images/insincere-support.png" class="post-img" />
+                        </figure>
+                        <p>
+                            <span class="category">
+                                Afirmacije
+                            </span>
+                            <br>
+                            Vole cure kad Brkovi Zare i Goci.
+
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        @*drugi tab *@
+        <div class="tab-pane fade in" id="afirmacije">
+            <div class="row-flex">
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                    <a href="#" class="post-box">
+                        <figure>
+                            <img src="~/Images/insincere-support.png" class="post-img" />
+                        </figure>
+                        <p>
+                            <span class="category">
+                                Afirmacije
+                            </span>
+                            <br>
+                            Vole cure kad Brkovi Zare i Goci.
+
+                        </p>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                    <a href="#" class="post-box">
+                        <figure>
+                            <img src="~/Images/employee-identity.png" class="post-img" />
+                        </figure>
+                        <p>
+                            <span class="category">
+                                Afirmacije
+                            </span>
+                            <br>
+                            Vi ste Supermen ili Superzena,u svakom trenutku.
+
+                        </p>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                    <a href="#" class="post-box">
+                        <figure>
+                            <img src="~/Images/brand-strategy.png" class="post-img" />
+                        </figure>
+                        <p>
+                            <span class="category">
+                                Afirmacije
+                            </span>
+                            <br>
+                            Ljubav koja počiva na plemenitim motivima,
+                            traje večno.
+
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @*drugi tab end*@
+    </div>
+</div>
 <script type="text/javascript">
         $("li").on("click", function () {
             $("li").removeClass("active");
