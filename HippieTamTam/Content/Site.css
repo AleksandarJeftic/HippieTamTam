@@ -109,6 +109,11 @@ body{
     background:white;  
 }
 
+ .post-box:focus {
+    text-decoration:none;
+
+}
+
 .post-box:hover .category::before{
     left:-58px;
     width:50px;
@@ -118,6 +123,7 @@ body{
     right:-58px;
     width:50px;
 }
+
 
 
 
@@ -132,6 +138,7 @@ body{
     border:1px solid #ececec;
     border-top:0;
     border-radius:0 0 4px 4px;
+    
 }
 
 .category{
@@ -224,6 +231,7 @@ h1{
         border-radius: 0;
         
     }
+
 }
 
 @media(max-width:991px) and (min-width:544px){
@@ -241,5 +249,18 @@ h1{
         font-size:14px;
         
     }
+
+}
+
+@media (max-width:443px){
+    .post-box:hover .category::before{
+    left:-30px !important;
+    width:26px !important;
+}
+
+.post-box:hover .category::after{
+    right:-32px !important;
+    width:28px !important;
+}
 }
 /*end of media */
