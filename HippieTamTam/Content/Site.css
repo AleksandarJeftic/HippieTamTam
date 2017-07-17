@@ -20,15 +20,16 @@ body{
 /*header with background and headline*/ 
 
 .blog-featured{
-    background:url(../Images/ekipa.png) #824ed2 no-repeat center bottom;
-    background-size:562px 315px;
-    margin:0;
-    padding:0;
+    background-color:#824ed2 !important;
+    background-repeat:no-repeat !important;
+    background-position:center bottom !important;
+    background-size:562px 315px !important;
     position:relative;
     text-align:center;
 }
 
 .blog-featured .link{
+    word-wrap:break-word;
     padding:2.25em 0 24em;
     display:block;
     text-decoration:none;
@@ -106,7 +107,7 @@ body{
 
 .post-box:hover {
     text-decoration:none;
-    background:white;  
+    background:#fff;  
 }
 
  .post-box:focus {
@@ -180,7 +181,12 @@ body{
 
 /*end of content main page*/
 
-
+/*footer*/
+.b-footer{
+    padding:2em 0;
+    border-top:1px solid #e0e0e0; 
+}
+/*end of footer*/
 /*responsive container */
 
 .b-container{
@@ -215,6 +221,9 @@ h1{
 
     .post-box{
         margin:0 0 25px;
+    }
+    .b-footer{
+    padding:4em 0; 
     }
 
 }
