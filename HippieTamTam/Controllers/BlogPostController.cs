@@ -11,7 +11,8 @@ namespace HippieTamTam.Controllers
         // GET: BlogPost
         public ActionResult Post()
         {
-            return View();
+            string s = "quo1";
+            return View("Post","~/Views/Shared/_sub1-txt1-txt2-"+s+".cshtml");
         }
     }
 }

@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\MainPageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -160,6 +161,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\BlogPost\Post.cshtml" />
+    <Content Include="Views\AdminPanel\Index.cshtml" />
+    <Content Include="Views\AdminPanel\Login.cshtml" />
+    <Content Include="Views\Shared\_sub1-txt1-txt2-quo1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
