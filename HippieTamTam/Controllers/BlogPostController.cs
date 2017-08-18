@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HippieTamTam.Models;
 
 namespace HippieTamTam.Controllers
 {
@@ -11,8 +12,13 @@ namespace HippieTamTam.Controllers
         // GET: BlogPost
         public ActionResult Post()
         {
-            string s = "quo1";
-            return View("Post","~/Views/Shared/_sub1-txt1-txt2-"+s+".cshtml");
+
+            BlogDatabaseContext DbData = new BlogDatabaseContext();
+
+            var Post = DbData.Posts.FirstOrDefault();
+            var layout = DbData.Posts.FirstOrDefault().Layout.LayoutName;
+            
+            return View("Post","~/Views/Shared/"+layout+".cshtml",Post);
         }
     }
 }

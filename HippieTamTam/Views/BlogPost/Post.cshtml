@@ -1,12 +1,13 @@
-﻿@*header*@
+﻿@model HippieTamTam.Models.Post
+@*header*@
 
-<header class="blog-featured" style="background:url(../../Images/employee-identity.png) #43464b;">
+<header class="blog-featured" style="background:url(@Url.Content(Model.PostBackground) )@Url.Content(Model.PostBackgroundColor);">
     <div class="b-container">
         <div class="headline">
             <h1>Vi ste super muškarac ili super žena u svakom trenutku. </h1>
             <p class="meta">
                 <span>hippie_tamtam</span>
-                &nbsp;|&nbsp; Jully 16, 2017
+                &nbsp;|&nbsp; @Model.PostDateCreated.ToString("MMM d, yyyy")
             </p>
         </div>
     </div>
@@ -26,16 +27,17 @@
 
     <div class="blog-post">
         <p>
-            Samopoštovanje ne mogu da obezbede drugi. Vi ste vredni, zato što vi tako kažete. Ako vaša vrednost zavisi od drugih, onda je to njihova vrednost.
+            @Model.PostSubhead1
         </p>
         <p>
-            Nikada neceš imati dovoljno samopoštovanja ako uporno odbijaš da misliš pozitivno o sebi. Samopoštovanje znači osećati se dobro u svojoj koži, imati lepo misljenje o sebi. A kada misliš lepo o sebi, ti razvijaš samopouzdanje, a ono dalje razvija samopoštovanje. Jedno pothranjuje drugo. Jednom kad uhvatiš korak, mozes postići gotovo sve u životu.
+            @Model.PostText1
         </p>
         <p>
-            Samopoštovanje je upravo to, ono što mislis o sebi. Ti imaš slobodnu volju da misliš šta god želis, pa zašto bi onda omalovažavali sebe?
+            @Model.PostText2
         </p>
         <blockquote>
-            "Ostati ćutljiv je kao sporo rastući rak na duši i osobina prave kukavice. Nema ničega inteligentnog u ne isticanju za samog sebe. Možda ne pobediš svaku bitku. Ali opet, će svi bar znati za šta ste se borili. Za SEBE!"           </blockquote>
+            @Model.PostQuote1
+        </blockquote>
     </div>
 </section>
 @*post content end*@
