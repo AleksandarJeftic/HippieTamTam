@@ -249,6 +249,8 @@ body{
 
 /*post content end*/
 
+
+
 /*POST most popular section*/
 
 .most-popular{
@@ -280,6 +282,24 @@ body{
 }
 
 /*POST most popular end */
+
+/*login form */
+
+.login-form{
+   padding:100px 0;
+   margin:0 auto;
+   max-width:500px;
+   
+}
+
+#login-container{
+    background-color:#eaebed;
+    margin-top:100px;
+    border:1px solid #eaebed;
+    border-radius:5px;
+}
+
+/*login form end*/
 
 /*footer*/
 .b-footer{
@@ -390,10 +410,13 @@ h1{
         font-size:14px;
         
     }
+    #login-container{
+        margin-top:50px;
+    }
 
 }
 
-@media (max-width:443px){
+@media (max-width:543px){
    .post-box:hover .category::before{
         left:-30px !important;
         width:26px !important;
@@ -402,6 +425,10 @@ h1{
    .post-box:hover .category::after{
         right:-32px !important;
         width:28px !important;
+    }
+
+   #login-container{
+        margin-top:25px;
     }
 }
 /*end of media */
