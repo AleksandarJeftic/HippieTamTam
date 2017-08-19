@@ -1,14 +1,14 @@
 ﻿@model List<HippieTamTam.Models.Post>
 
 @*header*@
-
-<header class="blog-featured" style="background:url(../../Images/ekipa.png) #824ed2;">
+@{ var last = Model.Last(); }
+<header class="blog-featured" style="background:url(@Url.Content(last.PostBackground)) @Url.Content(last.PostBackgroundColor);">
     <div class="b-container">
         <div class="headline">
-            <h1>Otvaranje novog kutka za duhovno obrazovane i neobrazovane. Dobrodošli.</h1>
+            <h1>@last.PostTitle</h1>
             <p class="meta">
-                <span>hippie_tamtam</span>
-                &nbsp;|&nbsp; Jully 16, 2017
+                <span>@last.PostAuthor</span>
+                &nbsp;|&nbsp; @last.PostDateCreated.ToString("MMM d, yyyy")
             </p>
         </div>
     </div>
