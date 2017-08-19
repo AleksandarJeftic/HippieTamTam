@@ -135,6 +135,7 @@
     <Content Include="Images\brand-strategy.png" />
     <Content Include="Images\ekipa.png" />
     <Content Include="Images\employee-identity.png" />
+    <Content Include="Images\handbook.png" />
     <Content Include="Images\insincere-support.png" />
     <Content Include="Images\leadership-books.png" />
     <Content Include="Images\positivity.png" />
@@ -180,8 +181,9 @@
     <Content Include="Views\BlogPost\Post.cshtml" />
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\AdminPanel\Login.cshtml" />
-    <Content Include="Views\Shared\_sub1-txt1-txt2-quo1.cshtml" />
-    <Content Include="Views\Shared\_sub1-txt1-bimg1.cshtml" />
+    <Content Include="Views\Shared\Afirmacije\_sub1-txt1-txt2-quo1.cshtml" />
+    <Content Include="Views\Shared\Afirmacije\_sub1-txt1-bimg1.cshtml" />
+    <Content Include="Views\Shared\Pesme\_txt1-txt2-txt3-txt4.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -79,52 +79,47 @@
         @*second tab *@
         <div class="tab-pane fade in" id="afirmacije">
             <div class="row-flex">
-                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
-                    <a href="#" class="post-box">
-                        <figure>
-                            <img src="~/Images/insincere-support.png" class="post-img" />
-                        </figure>
-                        <p>
-                            <span class="category">
-                                Afirmacije
-                            </span>
-                            <br>
-                            Vole cure kad Brkovi Zare i Goci.
+                @*loop of post links*@
 
-                        </p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
-                    <a href="@Url.Action("Post","BlogPost")" class="post-box">
-                        <figure>
-                            <img src="~/Images/employee-identity.png" class="post-img" />
-                        </figure>
-                        <p>
-                            <span class="category">
-                                Afirmacije
-                            </span>
-                            <br>
-                            Vi ste super muškarac ili super žena u svakom trenutku.
 
-                        </p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
-                    <a href="#" class="post-box">
-                        <figure>
-                            <img src="~/Images/brand-strategy.png" class="post-img" />
-                        </figure>
-                        <p>
-                            <span class="category">
-                                Afirmacije
-                            </span>
-                            <br>
-                            Ljubav koja počiva na plemenitim motivima,
-                            traje večno.
+                @foreach (var item in Model.Where(m=>m.Category.CategoryName=="Afirmacije"))
+                {
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                        <a href="@Url.Action("Post", "BlogPost", new { id = item.PostID })" class="post-box">
+                            <figure>
+                                <img src="@Url.Content(item.PostBackground)" class="post-img" />
+                            </figure>
+                            <p>
+                                @item.PostTitle
+                            </p>
+                        </a>
+                    </div>
+                }
 
-                        </p>
-                    </a>
-                </div>
+            </div>
+        </div>
+        @*second tab end*@
+
+        @*second tab *@
+        <div class="tab-pane fade in" id="pesme">
+            <div class="row-flex">
+                @*loop of post links*@
+
+
+                @foreach (var item in Model.Where(m => m.Category.CategoryName == "Pesme"))
+                {
+                    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
+                        <a href="@Url.Action("Post", "BlogPost", new { id = item.PostID })" class="post-box">
+                            <figure>
+                                <img src="@Url.Content(item.PostBackground)" class="post-img" />
+                            </figure>
+                            <p>
+                                @item.PostTitle
+                            </p>
+                        </a>
+                    </div>
+                }
+
             </div>
         </div>
         @*second tab end*@

@@ -15,8 +15,16 @@ namespace HippieTamTam.Controllers
         {
             var Post = DbData.Posts.Where(p=>p.PostID==id).SingleOrDefault();
             var layout = Post.Layout.LayoutName;
+
+            if (Post.Category.CategoryName=="Afirmacije")
+            {
+                return View("Post", "~/Views/Shared/Afirmacije/" + layout + ".cshtml", Post);
+            }
+            else
+            {
+                return View("Post", "~/Views/Shared/Pesme/" + layout + ".cshtml", Post);
+            }
             
-            return View("Post","~/Views/Shared/"+layout+".cshtml",Post);
         }
     }
 }
