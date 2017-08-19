@@ -1,4 +1,6 @@
-﻿@*header*@
+﻿@model List<HippieTamTam.Models.Post>
+
+@*header*@
 
 <header class="blog-featured" style="background:url(../../Images/ekipa.png) #824ed2;">
     <div class="b-container">
@@ -42,56 +44,32 @@
 
 <div class="b-container">
     <div id="post-list" class="tab-content">
-
+       
 @*first tab*@
         <div class="tab-pane fade in active" id="najnovije">
             <div class="row-flex">
+                @*loop of post links*@
+
+
+                @foreach (var item in Model)
+                {
                 <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
-                    <a href="@Url.Action("Post","BlogPost")" class="post-box">
+                    <a href="@Url.Action("Post", "BlogPost", new { id = item.PostID })" class="post-box">
                         <figure>
-                            <img src="~/Images/employee-identity.png" class="post-img"/>
+                            <img src="@Url.Content(item.PostBackground)" class="post-img"/>
                         </figure>
                             <p>
                                 <span class="category">
-                                    Afirmacije
+                                    @item.Category.CategoryName
                                 </span>
                                 <br>
-                                Vi ste super muškarac ili super žena u svakom trenutku.
+                                @item.PostTitle
 
                             </p>
                     </a>
                 </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
-                    <a href="#" class="post-box">
-                        <figure>
-                            <img src="~/Images/brand-strategy.png" class="post-img" />
-                        </figure>
-                        <p>
-                            <span class="category">
-                                Afirmacije
-                            </span>
-                            <br>
-                            Ljubav koja počiva na plemenitim motivima, 
-                            traje večno.
-
-                        </p>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-lg-4 col-xs-6 post">
-                    <a href="#" class="post-box">
-                        <figure>
-                            <img src="~/Images/insincere-support.png" class="post-img" />
-                        </figure>
-                        <p>
-                            <span class="category">
-                                Afirmacije
-                            </span>
-                            <br>
-                            Vole cure kad Brkovi Zare i Goci.
-
-                        </p>
-                    </a>
-                </div>
+                }
+       
             </div>
         </div>
 

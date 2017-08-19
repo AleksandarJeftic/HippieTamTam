@@ -166,6 +166,26 @@ namespace HippieTamTam.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Post>()
+                .Property(e => e.PostBigImageText1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .Property(e => e.PostBigImageText2)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .Property(e => e.PostBigImageText3)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .Property(e => e.PostBigImageText4)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .Property(e => e.PostBigImageText5)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
                 .Property(e => e.PostSmallImage1)
                 .IsUnicode(false);
 
@@ -184,6 +204,14 @@ namespace HippieTamTam.Models
             modelBuilder.Entity<Post>()
                 .Property(e => e.PostSmallImage5)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .Property(e => e.PostAuthor)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Post>()
+                .Property(e => e.PostViewCount);
+                
 
             modelBuilder.Entity<Post>()
                 .Property(e => e.PostDateCreated);

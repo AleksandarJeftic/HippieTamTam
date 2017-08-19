@@ -9,14 +9,12 @@ namespace HippieTamTam.Controllers
 {
     public class BlogPostController : Controller
     {
+        BlogDatabaseContext DbData = new BlogDatabaseContext();
         // GET: BlogPost
-        public ActionResult Post()
+        public ActionResult Post(int id)
         {
-
-            BlogDatabaseContext DbData = new BlogDatabaseContext();
-
-            var Post = DbData.Posts.FirstOrDefault();
-            var layout = DbData.Posts.FirstOrDefault().Layout.LayoutName;
+            var Post = DbData.Posts.Where(p=>p.PostID==id).SingleOrDefault();
+            var layout = Post.Layout.LayoutName;
             
             return View("Post","~/Views/Shared/"+layout+".cshtml",Post);
         }

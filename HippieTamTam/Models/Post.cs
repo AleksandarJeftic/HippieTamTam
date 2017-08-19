@@ -108,6 +108,21 @@ namespace HippieTamTam.Models
         public string PostBigImage5 { get; set; }
 
         [StringLength(200)]
+        public string PostBigImageText1 { get; set; }
+
+        [StringLength(200)]
+        public string PostBigImageText2 { get; set; }
+
+        [StringLength(200)]
+        public string PostBigImageText3 { get; set; }
+
+        [StringLength(200)]
+        public string PostBigImageText4 { get; set; }
+
+        [StringLength(200)]
+        public string PostBigImageText5 { get; set; }
+
+        [StringLength(200)]
         public string PostSmallImage1 { get; set; }
 
         [StringLength(200)]
@@ -122,13 +137,16 @@ namespace HippieTamTam.Models
         [StringLength(200)]
         public string PostSmallImage5 { get; set; }
 
-        public int PostViewCount { get; set; }
+        public int? PostViewCount { get; set; }
 
         public DateTime PostDateCreated { get; set; }
 
         public int LayoutID { get; set; }
 
         public int CategoryID { get; set; }
+
+        [StringLength(50)]
+        public string PostAuthor { get; set; }
 
         public virtual Category Category { get; set; }
 

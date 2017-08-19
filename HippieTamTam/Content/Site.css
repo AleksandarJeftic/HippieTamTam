@@ -213,6 +213,29 @@ body{
     line-height:60px;
 }
 
+#post-content .blog-post  .big-image{
+    border:0;
+    display:block;
+    margin:2.5em auto;
+    max-width:100%;
+    width:100%;
+    vertical-align:middle;
+}
+
+#post-content .blog-post .img-text {
+    color:#93a1af;
+    display:block;
+    font-size:13px;
+    line-height:1.6em;
+    margin:-25px 0 25px;
+    padding:6px 0;
+    position:relative;
+    text-align:center;
+    -webkit-font-smoothing:auto;
+    font-style:italic;
+    
+}
+
 /*post content end*/
 
 /*POST most popular section*/
@@ -328,6 +351,9 @@ h1{
         padding-left:21px;
     }
 
+    .big-image {
+        width: auto;
+    }
 }
 
 @media(max-width:991px) and (min-width:544px){

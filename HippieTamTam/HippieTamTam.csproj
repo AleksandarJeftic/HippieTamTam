@@ -137,7 +137,9 @@
     <Content Include="Images\employee-identity.png" />
     <Content Include="Images\insincere-support.png" />
     <Content Include="Images\leadership-books.png" />
+    <Content Include="Images\positivity.png" />
     <Content Include="Images\project-proposal.png" />
+    <Content Include="Images\vibration.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\profil.pubxml" />
@@ -179,6 +181,7 @@
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\AdminPanel\Login.cshtml" />
     <Content Include="Views\Shared\_sub1-txt1-txt2-quo1.cshtml" />
+    <Content Include="Views\Shared\_sub1-txt1-bimg1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
