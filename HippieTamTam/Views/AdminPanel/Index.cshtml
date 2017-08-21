@@ -1,7 +1,59 @@
-﻿<section class="b-container">
+﻿@model List<Object>
+
+<section class="b-container">
     <div class="row-flex">
         <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
-            
+            @using (Html.BeginForm("Create", "AdminPanel"))
+            {
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                foreach (List<HippieTamTam.Models.Layout> lays in Model.OfType<List<HippieTamTam.Models.Layout>>())
+                {
+                    int i = 0;
+                    foreach (var item in lays)
+                    {
+                        if (i == 0)
+                        {
+                            i++;
+                            listItems.Add(new SelectListItem
+                            {
+
+                                Text = item.LayoutName.ToString(),
+                                Value = item.LayoutID.ToString(),
+                                Selected = true
+                                
+                            }
+
+                        );
+                        }
+
+                        else
+                        {
+                            listItems.Add(new SelectListItem
+                            {
+
+                                Text = item.LayoutName.ToString(),
+                                Value = item.LayoutID.ToString()
+                            }
+                            );
+                        }
+                    }
+                }
+                <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.DropDownList("CreateDDL", listItems,"--Select Layout--");
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+                </div>
+                
+
+
+            }
         </div>
         <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
 

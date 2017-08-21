@@ -13,9 +13,24 @@ namespace HippieTamTam.Controllers
         // GET: AdminPanel
         public ActionResult Index()
         {
+            List<Object> LCP = new List<Object>();
+
+            List<Post> posts = new List<Post>();
+            posts = DbData.Posts.ToList();
+
+            List<Category> cats = new List<Category>();
+            cats = DbData.Categories.ToList();
+
+            List<Layout> lays = new List<Layout>();
+            lays = DbData.Layouts.ToList();
+
+            LCP.Add(posts);
+            LCP.Add(cats);
+            LCP.Add(lays);
+
             if (Session["AdminID"] !=null)
             {
-                return View();
+                return View(LCP);
             }
             else
             {
@@ -43,6 +58,26 @@ namespace HippieTamTam.Controllers
             return View();
 
             }
+        }
+        
+        public ActionResult Create(FormCollection form)
+        {
+
+            int id = int.Parse(form["CreateDDL"]);
+            if (id.GetType() == typeof(int) && id != 0)
+            {
+                var layout = DbData.Layouts.Where(l => l.LayoutID == id).SingleOrDefault();
+
+                return View("Create", "~/Views/Shared/Afirmacije/" + layout.LayoutName + "c.cshtml");
+            }
+            else
+                return RedirectToAction("Index", "AdminPanel");
+        }
+
+        
+        public ActionResult CreatePost(Post p)
+        {
+            return RedirectToAction("Index", "AdminPanel");
         }
     }
 }

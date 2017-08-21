@@ -184,6 +184,8 @@
     <Content Include="Views\Shared\Afirmacije\_sub1-txt1-txt2-quo1.cshtml" />
     <Content Include="Views\Shared\Afirmacije\_sub1-txt1-bimg1.cshtml" />
     <Content Include="Views\Shared\Pesme\_txt1-txt2-txt3-txt4.cshtml" />
+    <Content Include="Views\Shared\Afirmacije\_sub1-txt1-txt2-quo1c.cshtml" />
+    <Content Include="Views\AdminPanel\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
