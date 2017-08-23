@@ -162,6 +162,7 @@
     <Compile Include="Models\BlogDatabaseContext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Layout.cs" />
+    <Compile Include="Models\LaysCatsPost.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
