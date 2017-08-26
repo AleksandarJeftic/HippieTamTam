@@ -143,10 +143,13 @@
     <Content Include="Images\vibration.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\hippietamtam.pubxml" />
     <None Include="Properties\PublishProfiles\profil.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -163,6 +166,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Layout.cs" />
     <Compile Include="Models\LaysCatsPost.cs" />
+    <Compile Include="Models\LaysCatsPosts.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,6 +191,7 @@
     <Content Include="Views\Shared\Pesme\_txt1-txt2-txt3-txt4.cshtml" />
     <Content Include="Views\Shared\Afirmacije\_sub1-txt1-txt2-quo1c.cshtml" />
     <Content Include="Views\AdminPanel\Create.cshtml" />
+    <Content Include="Views\Shared\Afirmacije\_sub1-txt1-bimg1c.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

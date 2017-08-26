@@ -21,6 +21,10 @@ namespace HippieTamTam.Models
         [StringLength(100)]
         public string LayoutName { get; set; }
 
+        public int CategoryID { get; set; }
+
+        public virtual Category Category { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Post { get; set; }
     }

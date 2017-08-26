@@ -20,7 +20,7 @@ namespace HippieTamTam.Models
         [StringLength(10)]
         public string PostBackgroundColor { get; set; }
 
-        [StringLength(200)]
+        [StringLength(200,ErrorMessage ="must be under 200 letters")]
         public string PostSubhead1 { get; set; }
 
         [StringLength(200)]

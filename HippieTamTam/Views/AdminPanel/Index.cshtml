@@ -1,60 +1,39 @@
-﻿@model List<Object>
+﻿@model HippieTamTam.Models.LaysCatsPosts
 
 <section class="b-container">
     <div class="row-flex">
         <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
             @using (Html.BeginForm("Create", "AdminPanel"))
             {
-                List<SelectListItem> listItems = new List<SelectListItem>();
-                foreach (List<HippieTamTam.Models.Layout> lays in Model.OfType<List<HippieTamTam.Models.Layout>>())
-                {
-                    int i = 0;
-                    foreach (var item in lays)
-                    {
-                        if (i == 0)
-                        {
-                            i++;
-                            listItems.Add(new SelectListItem
-                            {
 
-                                Text = item.LayoutName.ToString(),
-                                Value = item.LayoutID.ToString(),
-                                Selected = true
-                                
-                            }
-
-                        );
-                        }
-
-                        else
-                        {
-                            listItems.Add(new SelectListItem
-                            {
-
-                                Text = item.LayoutName.ToString(),
-                                Value = item.LayoutID.ToString()
-                            }
-                            );
-                        }
-                    }
-                }
-                <div class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        @Html.DropDownList("CreateDDL", listItems);
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
-                </div>
+                IEnumerable<SelectListItem> Layouts = Enumerable.Empty<SelectListItem>();
                 
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-md-4">Izaberi Kategoriju</label>
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model=>model.CategoryID, new SelectList(Model.Categories,"CategoryID","CategoryName"),"Izaberi kategoriju");
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4">Izaberi layout</label>
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.LayoutID,Layouts);
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
 
 
-            }
-        </div>
+
+                }
+</div>
         <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
 
         </div>
@@ -67,4 +46,19 @@
 
         </div>
     </div>
+<script type="text/javascript">
+    var url = '@Url.Action("GetLayouts","AdminPanel")';
+    var layouts = $('#LayoutID');
+
+    $('#CategoryID').change(function () {
+        $.getJSON(url, { id: $(this).val() }, function (data) {
+            layouts.empty();
+            $.each(data, function (index, item) {
+                layouts.append($('<option></option>').val(item.Value).text(item.Text));
+
+            });
+        });
+    });
+</script>
 </section>
+
