@@ -1,0 +1,165 @@
+﻿@model HippieTamTam.Models.LaysCatsPost
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+</head>
+<body>
+    @RenderBody()
+    <section class="b-container">
+        @using (Html.BeginForm("CreatePost", "AdminPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.HiddenFor(model => model.Post.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.HiddenFor(model => model.Post.LayoutID, new { htmlAttributes = new { @class = "form-control" } })
+
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Naslov</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Post.PostTitle, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Izaberi Sliku</label>
+                    <div class="col-md-10">
+                        <input type="file" id="uploadImage" name="uploadImage">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Pozadina Slika</label>
+                    <div class="col-md-10">
+                        <canvas id="cvs"></canvas>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Boja Pozadine</label>
+                    <div class="col-md-10" id="coloredDiv">
+                        @Html.TextBoxFor(model => model.Post.PostBackgroundColor, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Podnaslov</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Post.PostSubhead1, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Prvi pasus</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Post.PostText1, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Drugi pasus</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Post.PostText2, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Treći pasus</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Post.PostText3, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Četvrti pasus</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Post.PostText4, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Autor posta</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Post.PostAuthor, new { htmlAttributes = new { @class = "form-control" } })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Napravi Post" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        }
+    </section>
+    <script type="text/javascript">
+
+       var imageLoader = document.getElementById('uploadImage');
+       imageLoader.addEventListener('change', handleImage);
+
+       var canvas = document.getElementById('cvs');
+       var ctx = canvas.getContext('2d');
+
+
+       function handleImage(e) {
+           var reader = new FileReader();
+           reader.onload = function (event) {
+               var img = new Image();
+               img.onload = function () {
+                   canvas.width = 562;
+                   canvas.height = 315;
+                   ctx.drawImage(img, 0, 0,img.width, img.height,0,0,canvas.width,canvas.height);
+                   getColorAt(10, 10);
+               }
+               img.src = event.target.result;
+           }
+           reader.readAsDataURL(e.target.files[0]);
+       }
+
+
+       function rgbToHex(R, G, B) { return toHex(R) + toHex(G) + toHex(B) }
+       function toHex(n) {
+           n = parseInt(n, 10);
+           if (isNaN(n)) return "00";
+           n = Math.max(0, Math.min(n, 255));
+           return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
+       }
+
+       function getColorAt(x, y) {
+           // getting image data and RGB values
+           var img_data = ctx.getImageData(x, y, 1, 1).data;
+           var R = img_data[0];
+           var G = img_data[1];
+           var B = img_data[2];
+           var rgb = R + ',' + G + ',' + B;
+           // convert RGB to HEX
+           var hex = rgbToHex(R, G, B);
+           // making the color the value of the input
+           var div = document.getElementById('coloredDiv');
+           $('#Post_PostBackgroundColor').val('#' + hex);
+           div.style.backgroundColor = ('#' + hex);
+       }
+    </script>
+</body>
+</html>

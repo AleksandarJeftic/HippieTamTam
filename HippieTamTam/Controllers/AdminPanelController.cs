@@ -76,8 +76,8 @@ namespace HippieTamTam.Controllers
         // CREATE OPTIONS 
         public ActionResult Create(FormCollection form)
         {
-            int idL = int.Parse(form["CategoryID"]);
-            int idC = int.Parse(form["LayoutID"]);
+            int idC = int.Parse(form["CategoryID"]);
+            int idL = int.Parse(form["LayoutID"]);
 
             var post = new Post
             {
@@ -92,14 +92,23 @@ namespace HippieTamTam.Controllers
 
             };
             
-            if (idC.GetType() == typeof(int) && idC != 0 && idL.GetType() == typeof(int) && idL != 0)
-            {
+           
+                var category = DbData.Categories.Where(c => c.CategoryID == idC).SingleOrDefault();
                 var layout = DbData.Layouts.Where(l => l.LayoutID == idL).SingleOrDefault();
 
-                return View("Create", "~/Views/Shared/Afirmacije/" + layout.LayoutName + "c.cshtml",LCP);
-            }
-            else
-                return RedirectToAction("Index", "AdminPanel");
+                if (category.CategoryName=="Afirmacije")
+                    {
+                        return View("Create", "~/Views/Shared/Afirmacije/" + layout.LayoutName + "c.cshtml",LCP);
+                    }
+                else if(category.CategoryName=="Pesme")
+                    {
+                        return View("Create", "~/Views/Shared/Pesme/" + layout.LayoutName + "c.cshtml", LCP);
+                    }
+                else
+                    {
+                        return RedirectToAction("Index", "AdminPanel");
+                    }
+            
         }
 
         
@@ -159,6 +168,31 @@ namespace HippieTamTam.Controllers
                 };
             DbData.Posts.Add(post);
             DbData.SaveChanges();
+            }
+            else
+            {
+                string pic = Path.GetFileName(uploadImage.FileName);
+                string path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Images"), pic);
+                uploadImage.SaveAs(path);
+                path = "../../Images/" + pic;
+
+                var post = new Post
+                {
+                    PostTitle = lcp.Post.PostTitle,
+                    PostBackground = path.ToString(),
+                    PostBackgroundColor = lcp.Post.PostBackgroundColor,
+                    PostSubhead1 = lcp.Post.PostSubhead1,
+                    PostText1 = lcp.Post.PostText1,
+                    PostText2 = lcp.Post.PostText2,
+                    PostText3=lcp.Post.PostText3,
+                    PostText4=lcp.Post.PostText4,
+                    CategoryID = lcp.Post.CategoryID,
+                    LayoutID = lcp.Post.LayoutID,
+                    PostDateCreated = DateTime.Now,
+                    PostAuthor = lcp.Post.PostAuthor
+                };
+                DbData.Posts.Add(post);
+                DbData.SaveChanges();
             }
 
             return RedirectToAction("Index", "MainPage");
