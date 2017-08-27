@@ -5,6 +5,7 @@ namespace HippieTamTam.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    
 
     [Table("Post")]
     public partial class Post
@@ -34,16 +35,16 @@ namespace HippieTamTam.Models
 
         [StringLength(200)]
         public string PostSubhead5 { get; set; }
-
+        
         [StringLength(1000)]
         public string PostText1 { get; set; }
-
+        
         [StringLength(1000)]
         public string PostText2 { get; set; }
-
+        
         [StringLength(1000)]
         public string PostText3 { get; set; }
-
+        
         [StringLength(1000)]
         public string PostText4 { get; set; }
 

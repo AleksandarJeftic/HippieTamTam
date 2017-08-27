@@ -183,6 +183,11 @@ body{
     margin:2em auto;
 }
 
+#post-contentp{
+    max-width:720px;
+    margin:0 auto 2em auto;
+}
+
 #post-content p ,#post-content blockquote{
     color:#222;
     font-family:Georgia,"Times New Roman",Times,serif;
@@ -191,13 +196,14 @@ body{
     line-height:25.5px;
 }
 
-#post-content .poem{
+.b-container .blog-post .poem{
     color:#222;
     font-family:Georgia,"Times New Roman",Times,serif;
     margin-bottom:23px;
     font-size:20px;
     line-height:25.5px;
     text-align:center;
+    white-space:pre-line;
     
     
 }

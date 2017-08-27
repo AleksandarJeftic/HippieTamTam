@@ -184,7 +184,6 @@ namespace HippieTamTam.Controllers
                     PostTitle = lcp.Post.PostTitle,
                     PostBackground = path.ToString(),
                     PostBackgroundColor = lcp.Post.PostBackgroundColor,
-                    PostSubhead1 = lcp.Post.PostSubhead1,
                     PostText1 = lcp.Post.PostText1,
                     PostText2 = lcp.Post.PostText2,
                     PostText3=lcp.Post.PostText3,
