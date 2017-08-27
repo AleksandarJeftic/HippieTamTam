@@ -283,7 +283,7 @@ body{
 
 /*POST most popular end */
 
-/*login form */
+/*login form  ADMIN PANEL*/
 
 .login-form{
    padding:100px 0;
@@ -300,6 +300,21 @@ body{
 }
 
 /*login form end*/
+
+/*ADMIN PANEL INDEX*/
+
+.b-container #admin-create{
+    padding-top:100px;
+    max-width:570px !important;
+    background-color:#b7e8f6 !important;
+}
+
+.b-container #admin-delete{
+    padding-top:100px;
+    max-width:570px !important;
+    background-color:#ff7388 !important;
+}
+/*ADMIN PANEL INDEX END*/
 
 /*footer*/
 .b-footer{
@@ -318,7 +333,7 @@ body{
 }
 /*end of responsive container*/
 
-h1{
+.blog-featured .b-container .headline h1{
     color:white;
     font-weight:500;
     line-height:1.3em;

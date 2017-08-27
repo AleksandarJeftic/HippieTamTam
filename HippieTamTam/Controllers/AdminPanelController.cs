@@ -60,11 +60,14 @@ namespace HippieTamTam.Controllers
             }
         }
         //CASCADING DROPDOWN LISTS
-        private IEnumerable<SelectListItem> GetCategories()
-        {
-           return DbData.Categories.Select(c => new SelectListItem { Text = c.CategoryName, Value = c.CategoryID.ToString() });
 
+        [HttpGet]
+        public ActionResult GetPosts(int id)
+        {
+            var data = DbData.Posts.Where(p => p.CategoryID == id).Select(p => new { Text = p.PostTitle, Value = p.PostID });
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
+
 
         [HttpGet]
         public ActionResult GetLayouts(int id)
@@ -74,10 +77,10 @@ namespace HippieTamTam.Controllers
         }
 
         // CREATE OPTIONS 
-        public ActionResult Create(FormCollection form)
+        public ActionResult Create(LaysCatsPosts lcposts)
         {
-            int idC = int.Parse(form["CategoryID"]);
-            int idL = int.Parse(form["LayoutID"]);
+            int idC = lcposts.SelectedCategory;
+            int idL = lcposts.SelectedLayout;
 
             var post = new Post
             {
@@ -197,5 +200,16 @@ namespace HippieTamTam.Controllers
 
             return RedirectToAction("Index", "MainPage");
         }
+
+        public ActionResult Delete(LaysCatsPosts lcp) {
+            var post = DbData.Posts.Where(p => p.PostID == lcp.SelectedPost).SingleOrDefault();
+
+            DbData.Entry(post).State= System.Data.Entity.EntityState.Deleted;
+            DbData.SaveChanges();
+
+            return RedirectToAction("Index", "MainPage");
+        }
+
+        
     }
 }

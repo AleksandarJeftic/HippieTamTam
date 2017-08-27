@@ -2,30 +2,34 @@
 
 <section class="b-container">
     <div class="row-flex">
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6" id="admin-create">
+            <center><h1>Napravi novi post</h1></center>
             @using (Html.BeginForm("Create", "AdminPanel"))
             {
 
                 IEnumerable<SelectListItem> Layouts = Enumerable.Empty<SelectListItem>();
+                
                 
                 <div class="form-horizontal">
 
                     <div class="form-group">
                         <label class="col-md-4">Izaberi Kategoriju</label>
                         <div class="col-md-8">
-                            @Html.DropDownListFor(model=>model.CategoryID, new SelectList(Model.Categories,"CategoryID","CategoryName"),"Izaberi kategoriju");
+                            @Html.DropDownListFor(model=>model.SelectedCategory, new SelectList(Model.Categories,"CategoryID","CategoryName"),"Izaberi kategoriju")
+                            @Html.ValidationMessageFor(model => model.SelectedCategory)
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4">Izaberi layout</label>
                         <div class="col-md-8">
-                            @Html.DropDownListFor(model => model.LayoutID,Layouts,"Izaberi layout");
+                            @Html.DropDownListFor(model => model.SelectedLayout,Layouts,"Izaberi layout")
+                            @Html.ValidationMessageFor(model => model.SelectedLayout)
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-offset-5 col-md-7">
-                            <input type="submit" value="Create" class="btn btn-default" />
+                            <input type="submit" value="Dalje" class="btn btn-default" />
                         </div>
                     </div>
                 </div>
@@ -39,21 +43,55 @@
         </div>
     </div>
     <div class="row-flex">
-        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6" id="admin-delete">
+            <center><h1>Obriši post</h1></center>
+            @using (Html.BeginForm("Delete", "AdminPanel"))
+            {
+                IEnumerable<SelectListItem> Posts = Enumerable.Empty<SelectListItem>();
+               
+                <div class="form-horizontal">
 
-        </div>
+                   <div class="form-group">
+                       <label class="col-md-3">Izaberi Kategoriju</label>
+                       <div class="col-md-9">
+                           @Html.DropDownListFor(model => model.SelectedCatOfPosts, new SelectList(Model.Categories, "CategoryID", "CategoryName"), "Izaberi kategoriju")
+                           @Html.ValidationMessageFor(model => model.SelectedCatOfPosts)
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       <label class="col-md-3">Izaberi post</label>
+                       <div class="col-md-9">
+                           @Html.DropDownListFor(model => model.SelectedPost, Posts, "Izaberi post")
+                           @Html.ValidationMessageFor(model => model.SelectedPost)
+                       </div>
+                   </div>
+                   <div class="form-group">
+                       <div class="col-md-offset-5 col-md-7">
+                           <input type="submit" value="Obriši post" class="btn btn-default" />
+                       </div>
+                   </div>
+
+               </div>
+            }
+                </div>
         <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
 
         </div>
     </div>
 </section>
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
-<script type="text/javascript">
-    var url = '@Url.Action("GetLayouts","AdminPanel")';
-    var layouts = $('#LayoutID');
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
 
-    $('#CategoryID').change(function () {
+<script type="text/javascript">
+    var url = '@Url.Action("GetLayouts", "AdminPanel")';
+    var layouts = $('#SelectedLayout');
+    
+
+    $('#SelectedCategory').change(function () {
         $.getJSON(url, { id: $(this).val() }, function (data) {
             layouts.empty();
             $.each(data, function (index, item) {
@@ -62,5 +100,21 @@
             });
         });
     });
-</script>
 
+    
+
+</script>
+<script type="text/javascript">
+    var urlp = '@Url.Action("GetPosts","AdminPanel")';
+    var posts = $('#SelectedPost');
+
+    $('#SelectedCatOfPosts').change(function () {
+        $.getJSON(urlp, { id: $(this).val() }, function (data) {
+            posts.empty();
+            $.each(data, function (index, item) {
+                posts.append($('<option></option>').val(item.Value).text(item.Text));
+
+            });
+        });
+    });
+</script>
