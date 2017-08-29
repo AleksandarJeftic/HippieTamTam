@@ -116,25 +116,72 @@ namespace HippieTamTam.Controllers
 
         
         // CREATE POST ACTION METHOD
-        public ActionResult CreatePost(LaysCatsPost lcp, HttpPostedFileBase uploadImage,HttpPostedFileBase uploadBigImage)
+        public ActionResult CreatePost(LaysCatsPost lcp, HttpPostedFileBase uploadImage,HttpPostedFileBase uploadBigImage1)
         {
+            var images = new List<HttpPostedFileBase>();
+            images.Add(uploadImage);
+            images.Add(uploadBigImage1);
+
+            var paths = new List<string>();
+            for (int i = 0; i < 6; i++)
+            {
+            paths.Add(null);
+            }
             
-            if (lcp.Post.LayoutID == 1)
+
+            for (int i = 0;i<images.Count && images[i] != null; i++)
             {
-                string pic = Path.GetFileName(uploadImage.FileName);
-                string path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Images"), pic);
-                uploadImage.SaveAs(path);
-                path = "../../Images/" + pic;
+
+            string pic = Path.GetFileName(images[i].FileName);
+            string path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Images"), pic);
+            images[i].SaveAs(path);
+            paths[i] = "../../Images/" + pic;
+            }
 
                 var post = new Post
                 {
                     PostTitle = lcp.Post.PostTitle,
-                    PostBackground = path.ToString(),
+                    PostBackground = paths[0],
                     PostBackgroundColor = lcp.Post.PostBackgroundColor,
                     PostSubhead1 = lcp.Post.PostSubhead1,
+                    PostSubhead2 = lcp.Post.PostSubhead2,
+                    PostSubhead3 = lcp.Post.PostSubhead3,
+                    PostSubhead4 = lcp.Post.PostSubhead4,
+                    PostSubhead5 = lcp.Post.PostSubhead5,
                     PostText1 = lcp.Post.PostText1,
                     PostText2 = lcp.Post.PostText2,
+                    PostText3 = lcp.Post.PostText3,
+                    PostText4 = lcp.Post.PostText4,
+                    PostText5 = lcp.Post.PostText5,
+                    PostText6 = lcp.Post.PostText6,
+                    PostText7 = lcp.Post.PostText7,
+                    PostText8 = lcp.Post.PostText8,
+                    PostText9 = lcp.Post.PostText9,
+                    PostText10 = lcp.Post.PostText10,
                     PostQuote1 = lcp.Post.PostQuote1,
+                    PostQuote2 = lcp.Post.PostQuote2,
+                    PostQuote3 = lcp.Post.PostQuote3,
+                    PostQuote4 = lcp.Post.PostQuote4,
+                    PostQuote5 = lcp.Post.PostQuote5,
+                    PostVideo1 = lcp.Post.PostVideo1,
+                    PostVideo2 = lcp.Post.PostVideo2,
+                    PostVideo3 = lcp.Post.PostVideo3,
+                    PostVideo4 = lcp.Post.PostVideo4,
+                    PostBigImage1 = paths[1],
+                    PostBigImage2 = paths[2],
+                    PostBigImage3 = paths[3],
+                    PostBigImage4 = paths[4],
+                    PostBigImage5 = paths[5],
+                    PostBigImageText1 = lcp.Post.PostBigImageText1,
+                    PostBigImageText2 = lcp.Post.PostBigImageText2,
+                    PostBigImageText3 = lcp.Post.PostBigImageText3,
+                    PostBigImageText4 = lcp.Post.PostBigImageText4,
+                    PostBigImageText5 = lcp.Post.PostBigImageText5,
+                    PostSmallImage1 = lcp.Post.PostSmallImage1,
+                    PostSmallImage2 = lcp.Post.PostSmallImage2,
+                    PostSmallImage3 = lcp.Post.PostSmallImage3,
+                    PostSmallImage4 = lcp.Post.PostSmallImage4,
+                    PostSmallImage5 = lcp.Post.PostSmallImage5,
                     CategoryID = lcp.Post.CategoryID,
                     LayoutID = lcp.Post.LayoutID,
                     PostDateCreated = DateTime.Now,
@@ -142,72 +189,21 @@ namespace HippieTamTam.Controllers
                 };
                 DbData.Posts.Add(post);
                 DbData.SaveChanges();
-            }
-            else if (lcp.Post.LayoutID==2)
-            {
-                string pic = Path.GetFileName(uploadImage.FileName);
-                string path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Images"), pic);
-                uploadImage.SaveAs(path);
-                path = "../../Images/" + pic;
-
-                string picB = Path.GetFileName(uploadBigImage.FileName);
-                string pathB = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Images"), picB);
-                uploadBigImage.SaveAs(pathB);
-                pathB = "../../Images/" + picB;
-
-                var post = new Post
-                {
-                    PostTitle = lcp.Post.PostTitle,
-                    PostBackground = path.ToString(),
-                    PostBackgroundColor = lcp.Post.PostBackgroundColor,
-                    PostSubhead1 = lcp.Post.PostSubhead1,
-                    PostText1 = lcp.Post.PostText1,
-                    PostBigImage1=pathB.ToString(),
-                    PostBigImageText1=lcp.Post.PostBigImageText1,
-                    CategoryID = lcp.Post.CategoryID,
-                    LayoutID = lcp.Post.LayoutID,
-                    PostDateCreated = DateTime.Now,
-                    PostAuthor = lcp.Post.PostAuthor
-                };
-            DbData.Posts.Add(post);
-            DbData.SaveChanges();
-            }
-            else
-            {
-                string pic = Path.GetFileName(uploadImage.FileName);
-                string path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Images"), pic);
-                uploadImage.SaveAs(path);
-                path = "../../Images/" + pic;
-
-                var post = new Post
-                {
-                    PostTitle = lcp.Post.PostTitle,
-                    PostBackground = path.ToString(),
-                    PostBackgroundColor = lcp.Post.PostBackgroundColor,
-                    PostText1 = lcp.Post.PostText1,
-                    PostText2 = lcp.Post.PostText2,
-                    PostText3=lcp.Post.PostText3,
-                    PostText4=lcp.Post.PostText4,
-                    CategoryID = lcp.Post.CategoryID,
-                    LayoutID = lcp.Post.LayoutID,
-                    PostDateCreated = DateTime.Now,
-                    PostAuthor = lcp.Post.PostAuthor
-                };
-                DbData.Posts.Add(post);
-                DbData.SaveChanges();
-            }
 
             return RedirectToAction("Index", "MainPage");
-        }
+       }
+            
+        
 
         public ActionResult Delete(LaysCatsPosts lcp) {
+
             var post = DbData.Posts.Where(p => p.PostID == lcp.SelectedPost).SingleOrDefault();
 
             DbData.Entry(post).State= System.Data.Entity.EntityState.Deleted;
             DbData.SaveChanges();
 
-            return RedirectToAction("Index", "MainPage");
-        }
+            return RedirectToAction("Index", "AdminPanel");
+            }
 
         
     }
